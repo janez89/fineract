@@ -73,7 +73,7 @@ public class ProgressiveLoanScheduleGenerator implements LoanScheduleGenerator {
         // determine the total charges due at time of disbursement
         final BigDecimal chargesDueAtTimeOfDisbursement = deriveTotalChargesDueAtTimeOfDisbursement(loanCharges);
 
-        final CurrencyData currency = loanApplicationTerms.getCurrency();
+        final CurrencyData currency = MonetaryCurrency.fromCurrencyData(loanApplicationTerms.getCurrency()).toData();
         LocalDate periodStartDate = RepaymentStartDateType.DISBURSEMENT_DATE.equals(loanApplicationTerms.getRepaymentStartDateType())
                 ? loanApplicationTerms.getExpectedDisbursementDate()
                 : loanApplicationTerms.getSubmittedOnDate();
